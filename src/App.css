@@ -1,0 +1,10 @@
+.checkbox__view {
+    margin: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -2,12 +2,15 @@
     width: 30%;
     text-align: left;
     border: 3px solid rgb(10, 59, 10);
+    box-shadow: 0 2px 3px rgb(70, 71, 70);
     display: block;
+    margin: 15px;
 }
 
 .section__title {
     padding: 10px 40px;
     width: 80%;
+    word-wrap: break-word;
 }
 
 .title {
@@ -34,7 +37,7 @@
     word-wrap: break-word;
 }
 
-.checkbox {
+.checkbox__swicthColor {
     width: 20px;
     height: 20px;
 }
