@@ -1,6 +1,7 @@
 import Header from './components/Header';
 import Card from './components/Card';
 import React, { Component } from 'react';
+import MainChekbox from './components/MainCheckbox';
 import './App.css';
 
 class App extends Component {
@@ -29,16 +30,10 @@ class App extends Component {
         return (
             <>
                 <Header name="Animals" />
-                <div style={{ fontSize: 20 }}>
-                    <input
-                        className="checkbox__view"
-                        type="checkbox"
-                        id="view"
-                        checked={viewCheck}
-                        onChange={this.switchView}
-                    />
-                    <label for="view">View only</label>
-                </div>
+                <MainChekbox
+                    viewCheck={viewCheck}
+                    switchView={this.switchView}
+                />
                 <div className="cards">
                     {animals.map((animal, index) => (
                         <Card
