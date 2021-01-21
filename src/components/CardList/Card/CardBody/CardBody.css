@@ -1,0 +1,11 @@
+.line {
+    margin: 3px auto;
+    background-color: black;
+    width: 80%;
+    height: 2px;
+}
+
+.section__text {
+    padding: 0 40px;
+    word-wrap: break-word;
+}

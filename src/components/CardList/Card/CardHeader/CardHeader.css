@@ -1,0 +1,57 @@
+.title {
+    word-wrap: break-word;
+    font-size: 20px;
+    width: 60%;
+}
+
+.section__title {
+    padding: 10px 40px;
+    width: 80%;
+    word-wrap: break-word;
+}
+
+.title__block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn__edit,
+.btn__save,
+.btn__cancel {
+    padding: 8px;
+    color: white;
+    background-color: #ac51db;
+    border: none;
+    border-radius: 4px;
+    width: 40px;
+    height: 40px;
+}
+
+.btn__edit:hover {
+    background-color: #72378f;
+    box-shadow: 0 2px 3px rgb(70, 71, 70);
+}
+
+.btn__save {
+    width: 60px;
+    background-color: blue;
+    font-size: 10px;
+}
+
+.btn__save:hover {
+    background-color: rgb(35, 35, 150);
+    box-shadow: 0 2px 3px rgb(70, 71, 70);
+}
+
+.btn__cancel {
+    width: 60px;
+    background-color: red;
+    font-size: 10px;
+    margin-left: 2px;
+}
+
+.btn__cancel:hover {
+    background-color: rgb(163, 30, 30);
+    box-shadow: 0 2px 3px rgb(70, 71, 70);
+}
