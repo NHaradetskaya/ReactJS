@@ -2,6 +2,7 @@ import Header from '../components/Header';
 import CardList from '../components/CardList';
 import React, { Component } from 'react';
 import MainChekbox from '../components/MainCheckbox';
+import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 
 class App extends Component {
@@ -65,7 +66,7 @@ class App extends Component {
         });
     };
 
-    selectCardHandler = (id) => {
+    selectCardHandler = id => {
         this.setState((state) => {
             return {
                 list: state.list.map((item) =>
@@ -85,6 +86,18 @@ class App extends Component {
         });
     };
 
+    addCard = () => {
+        const { list } = this.state;
+        const newList = {
+            id: uuidv4(),
+            name: window.prompt('Enter card title'),
+            description: window.prompt('Enter card content'),
+            selected: false,
+        };
+
+        this.setState({ list: [...list, newList] });
+    };
+
     render() {
         const { viewCheck } = this.state;
         return (
@@ -96,6 +109,9 @@ class App extends Component {
                 />
                 <button className="btn__delete" onClick={this.handleCardDelete}>
                     Delete selected
+                </button>
+                <button className="btn__add" onClick={this.addCard}>
+                    Add card
                 </button>
                 <div className="cards">
                     <CardList

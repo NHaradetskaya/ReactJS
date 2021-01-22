@@ -3,7 +3,8 @@
     flex-wrap: wrap;
 }
 
-.btn__delete {
+.btn__delete,
+.btn__add {
     margin: 10px;
     padding: 8px;
     font-size: 20px;
@@ -11,10 +12,18 @@
     background-color: tomato;
     border: none;
     border-radius: 4px;
+}
+
+.btn__delete:hover {
+    background-color: rgb(221, 62, 34);
     box-shadow: 0 2px 3px rgb(70, 71, 70);
 }
 
-.btn__delete:hover{
-    background-color:  rgb(221, 62, 34);
-    box-shadow: 0 2px 3px  rgb(70, 71, 70);
+.btn__add {
+    background-color: goldenrod;
+}
+
+.btn__add:hover {
+    background-color: rgb(155, 118, 26);
+    box-shadow: 0 2px 3px rgb(70, 71, 70);
 }
