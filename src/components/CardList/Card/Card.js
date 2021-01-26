@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Card.css';
 import CardBody from './CardBody';
 import CardHeader from './CardHeader';
+import withLoadingDelay from '../../../hoc/withLoadingDelay';
 
 class Card extends Component {
     constructor(props) {
@@ -21,6 +22,7 @@ class Card extends Component {
         const { editCheck } = this.state;
         if (viewCheck && editCheck) this.cancel();
     };
+
 
     switchColor = () => {
         const { flagCheck } = this.state;
@@ -102,4 +104,4 @@ class Card extends Component {
     }
 }
 
-export default Card;
+export default withLoadingDelay(Card);
