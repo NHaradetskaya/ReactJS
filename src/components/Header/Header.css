@@ -1,6 +1,11 @@
 .title__header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     text-align: center;
+    align-items: center;
     margin: 30px auto;
     border: 3px solid blue;
     font-size: 50px;
+    padding: 0 20px;
 }

@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Card from './Card';
+import CardsContext from '../../context/card-context';
 
-const cardList = props =>
-    props.list.map((item) => (
+
+const CardList = () => {
+    const cardContext = useContext(CardsContext);
+
+    return cardContext.list.map((item) => (
         <Card
             eachItem={item}
             key={item.id}
-            viewCheck={props.viewCheck}
-            onSelectCardHandler={() => props.onSelectCardHandler(item.id)}
+            viewCheck={cardContext.viewCheck}
+            onSelectCardHandler={() => cardContext.selectCardHandler(item.id)}
         />
     ));
+};
 
-
-export default cardList;
+export default CardList;

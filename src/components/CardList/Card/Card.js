@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Card.css';
 import CardBody from './CardBody';
 import CardHeader from './CardHeader';
@@ -22,7 +23,7 @@ class Card extends Component {
         const { editCheck } = this.state;
         if (viewCheck && editCheck) this.cancel();
     };
-
+    
 
     switchColor = () => {
         const { flagCheck } = this.state;
@@ -52,7 +53,7 @@ class Card extends Component {
         });
     };
 
-    changeTitleHandle = event => {
+    changeTitleHandle = (event) => {
         const { title } = this.state;
         if (this.state.tempTitle === '') {
             this.setState({ tempTitle: title });
@@ -60,7 +61,7 @@ class Card extends Component {
         this.setState({ title: event.target.value });
     };
 
-    changeInfoHandle = event => {
+    changeInfoHandle = (event) => {
         const { info } = this.state;
         if (this.state.tempInfo === '') {
             this.setState({ tempInfo: info });
@@ -103,5 +104,10 @@ class Card extends Component {
         );
     }
 }
+
+Card.propTypes = {
+    eachItem: PropTypes.object,
+    viewCheck: PropTypes.bool,
+};
 
 export default withLoadingDelay(Card);

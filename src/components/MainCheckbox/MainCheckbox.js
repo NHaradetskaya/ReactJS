@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import CardsContext from '../../context/card-context';
 
 const StyledDiv = styled.div`
     display: inline-block;
@@ -30,16 +31,17 @@ const StyledDiv = styled.div`
     }
 `;
 
-const MainChekbox = (props) => {
+const MainChekbox = () => {
+    const cardContext = useContext(CardsContext);
     return (
         <StyledDiv>
             <input
                 type="checkbox"
                 id="view"
-                checked={props.viewCheck}
-                onChange={props.switchView}
+                checked={cardContext.viewCheck}
+                onChange={cardContext.switchView}
             />
-            <label for="view">View only</label>
+            <label htmlFor="view">View only</label>
         </StyledDiv>
     );
 };

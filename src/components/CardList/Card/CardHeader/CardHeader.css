@@ -1,4 +1,4 @@
-.title {
+.text__title {
     word-wrap: break-word;
     font-size: 20px;
     width: 60%;
@@ -6,7 +6,7 @@
 
 .section__title {
     padding: 10px 40px;
-    width: 80%;
+    width: 100%;
     word-wrap: break-word;
 }
 
@@ -14,6 +14,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.checkbox__swicthColor {
+    width: 20px;
+    height: 20px;
 }
 
 .btn__edit,
@@ -26,6 +31,7 @@
     border-radius: 4px;
     width: 40px;
     height: 40px;
+    margin-left: 10px;
 }
 
 .btn__edit:hover {

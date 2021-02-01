@@ -6,6 +6,7 @@ import {
     AiFillCloseCircle,
 } from 'react-icons/ai';
 
+
 const cardHeader = props => {
     const {
         text,
@@ -20,7 +21,7 @@ const cardHeader = props => {
         onChangeTitleHandle,
     } = props;
 
-    let caption = <h3 className="title">{text}</h3>;
+    let caption = <h3 className="text__title">{text}</h3>;
 
     if (isEdit && !isView) {
         caption = <textarea value={text} onChange={onChangeTitleHandle} />;
