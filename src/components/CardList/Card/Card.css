@@ -7,6 +7,13 @@
     margin: 15px;
 }
 
+.line {
+    margin: 3px auto;
+    background-color: black;
+    width: 80%;
+    height: 2px;
+}
+
 textarea {
     border: 2px solid #6d79cd;
     height: 50px;

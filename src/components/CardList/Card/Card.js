@@ -23,7 +23,6 @@ class Card extends Component {
         const { editCheck } = this.state;
         if (viewCheck && editCheck) this.cancel();
     };
-    
 
     switchColor = () => {
         const { flagCheck } = this.state;
@@ -93,7 +92,7 @@ class Card extends Component {
                     onSwitchColor={this.switchColor}
                     onChangeTitleHandle={this.changeTitleHandle}
                 />
-                <div className="line" />
+                <div className="line" /><br/>
                 <CardBody
                     info={info}
                     isEdit={editCheck}

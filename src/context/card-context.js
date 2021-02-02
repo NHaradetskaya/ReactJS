@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
 
 const CardsContext = React.createContext({
     list: [],
@@ -12,58 +13,28 @@ const CardsContext = React.createContext({
 
 export class CardsContextProvider extends Component {
     state = {
-        list: [
-            {
-                id: 1,
-                name: 'Lion',
-                description: 'Some text',
-                selected: false,
-            },
-            {
-                id: 2,
-                name: 'Cat',
-                description: 'Some text',
-                selected: false,
-            },
-            {
-                id: 3,
-                name: 'Ferret',
-                description: 'Some text',
-                selected: false,
-            },
-            {
-                id: 4,
-                name: 'Dog',
-                description: 'Some text',
-                selected: false,
-            },
-            {
-                id: 5,
-                name: 'Opossum',
-                description: 'Some text',
-                selected: false,
-            },
-            {
-                id: 6,
-                name: 'Mouse',
-                description: 'Some text',
-                selected: false,
-            },
-            {
-                id: 7,
-                name: 'Tiger',
-                description: 'Some text',
-                selected: false,
-            },
-            {
-                id: 8,
-                name: 'Horse',
-                description: 'Some text',
-                selected: false,
-            },
-        ],
+        list: [],
         viewCheck: false,
     };
+
+    componentDidMount() {
+        axios
+            .get(
+                'https://raw.githubusercontent.com/BrunnerLivio/PokemonDataGraber/master/output.json',
+            )
+            .then((response) => {
+                const cards = response.data.slice(0, 15);
+                const updatedCards = cards.map((card) => {
+                    return {
+                        id: card.Number,
+                        name: card.Name,
+                        description: card.About,
+                        selected: false,
+                    };
+                });
+                this.setState({ list: updatedCards });
+            });
+    }
 
     switchView = () => {
         this.setState({
