@@ -1,39 +1,24 @@
 import Header from '../components/Header';
-import CardList from '../components/CardList';
 import React, { Component } from 'react';
-import MainChekbox from '../components/MainCheckbox';
-import './App.css';
-import CardsContext, { CardsContextProvider } from '../context/card-context';
+import Home from '../components/Home';
+import SignIn from '../components/SignIn';
+import Error from '../components/Error';
+import { CardsContextProvider } from '../context/card-context';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
 class App extends Component {
     render() {
         return (
-            <CardsContextProvider>
-                <Header name="Animals" />
-                <MainChekbox />
-                <CardsContext.Consumer>
-                    {context => (
-                        <>
-                            <button
-                                onClick={context.handleCardDelete}
-                                className="btn__delete"
-                            >
-                                Delete selected
-                            </button>
-                            <button
-                                onClick={context.addCard}
-                                className="btn__add"
-                            >
-                                Add card
-                            </button>
-                        </>
-                    )}
-                </CardsContext.Consumer>
-
-                <div className="cards">
-                    <CardList />
-                </div>
-            </CardsContextProvider>
+            <BrowserRouter>
+                <CardsContextProvider>
+                    <Header name="Pokemons" />
+                    <Switch>
+                        <Route path="/" exact component={Home} />
+                        <Route path="/sign-in" component={SignIn} />
+                        <Route component={Error} />
+                    </Switch>
+                </CardsContextProvider>
+            </BrowserRouter>
         );
     }
 }

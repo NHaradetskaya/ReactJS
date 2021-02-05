@@ -11,7 +11,8 @@ const CardList = () => {
             eachItem={item}
             key={item.id}
             viewCheck={cardContext.viewCheck}
-            onSelectCardHandler={() => cardContext.selectCardHandler(item.id)}
+            onSelectCardHandler={cardContext.selectCardHandler(item.id)}
+            onUpdateCardHandler={cardContext.updateCardHandler(item.id)}
         />
     ));
 };

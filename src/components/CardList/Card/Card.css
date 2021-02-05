@@ -14,11 +14,6 @@
     height: 2px;
 }
 
-textarea {
-    border: 2px solid #6d79cd;
-    height: 50px;
-}
-
 @media only screen and (max-width: 800px) {
     .section {
         width: 100%;

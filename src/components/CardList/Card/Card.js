@@ -13,8 +13,6 @@ class Card extends Component {
             editCheck: false,
             title: this.props.eachItem.name,
             info: this.props.eachItem.description,
-            tempTitle: '',
-            tempInfo: '',
         };
     }
 
@@ -35,11 +33,12 @@ class Card extends Component {
     };
 
     cancel = () => {
-        const { tempTitle, tempInfo, info, title, editCheck } = this.state;
+        const { editCheck } = this.state;
+        const { name, description } = this.props.eachItem;
         this.setState({
             editCheck: !editCheck,
-            title: tempTitle || title,
-            info: tempInfo || info,
+            title: name,
+            info: description,
         });
     };
 
@@ -47,24 +46,15 @@ class Card extends Component {
         const { title, info } = this.state;
         this.setState({
             editCheck: false,
-            tempTitle: title,
-            tempInfo: info,
         });
+        this.props.onUpdateCardHandler(title, info);
     };
 
-    changeTitleHandle = (event) => {
-        const { title } = this.state;
-        if (this.state.tempTitle === '') {
-            this.setState({ tempTitle: title });
-        }
+    changeTitleHandle = event => {
         this.setState({ title: event.target.value });
     };
 
-    changeInfoHandle = (event) => {
-        const { info } = this.state;
-        if (this.state.tempInfo === '') {
-            this.setState({ tempInfo: info });
-        }
+    changeInfoHandle = event => {
         this.setState({ info: event.target.value });
     };
 
@@ -92,7 +82,8 @@ class Card extends Component {
                     onSwitchColor={this.switchColor}
                     onChangeTitleHandle={this.changeTitleHandle}
                 />
-                <div className="line" /><br/>
+                <div className="line" />
+                <br />
                 <CardBody
                     info={info}
                     isEdit={editCheck}

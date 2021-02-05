@@ -9,6 +9,7 @@ const CardsContext = React.createContext({
     handleCardDelete: () => {},
     addCard: () => {},
     switchView: () => {},
+    updateCardHandler: () => {},
 });
 
 export class CardsContextProvider extends Component {
@@ -42,7 +43,7 @@ export class CardsContextProvider extends Component {
         });
     };
 
-    selectCardHandler = id => {
+    selectCardHandler = id => () => {
         this.setState((state) => {
             return {
                 list: state.list.map((item) =>
@@ -76,6 +77,22 @@ export class CardsContextProvider extends Component {
         });
     };
 
+    updateCardHandler = cardId => (newCaption, newDescription) => {
+        this.setState((state) => {
+            return {
+                list: state.list.map((item) =>
+                    item.id === cardId
+                        ? {
+                              ...item,
+                              name: newCaption,
+                              description: newDescription,
+                          }
+                        : item,
+                ),
+            };
+        });
+    };
+
     render() {
         return (
             <CardsContext.Provider
@@ -86,6 +103,7 @@ export class CardsContextProvider extends Component {
                     selectCardHandler: this.selectCardHandler,
                     handleCardDelete: this.handleCardDelete,
                     addCard: this.addCard,
+                    updateCardHandler: this.updateCardHandler,
                 }}
             >
                 {this.props.children}

@@ -21,6 +21,17 @@
     height: 20px;
 }
 
+.textarea__caption {
+    border: 2px solid #6d79cd;
+    height: 50px;
+}
+
+.btns{
+    display:flex;
+    justify-content: space-between;
+
+}
+
 .btn__edit,
 .btn__save,
 .btn__cancel {
@@ -40,7 +51,7 @@
 }
 
 .btn__save {
-    width: 60px;
+    width: 50px;
     background-color: blue;
     font-size: 10px;
 }
@@ -54,7 +65,6 @@
     width: 60px;
     background-color: red;
     font-size: 10px;
-    margin-left: 2px;
 }
 
 .btn__cancel:hover {

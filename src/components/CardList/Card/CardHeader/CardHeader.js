@@ -24,7 +24,7 @@ const cardHeader = props => {
     let caption = <h3 className="text__title">{text}</h3>;
 
     if (isEdit && !isView) {
-        caption = <textarea value={text} onChange={onChangeTitleHandle} />;
+        caption = <textarea className="textarea__caption" value={text} onChange={onChangeTitleHandle} />;
     }
 
     return (
@@ -32,7 +32,7 @@ const cardHeader = props => {
             <div className="title__block">
                 {caption}
                 {isEdit && !isView ? (
-                    <div>
+                    <div className="btns">
                         <button onClick={onSave} className="btn__save">
                             <AiFillDownCircle /> Save
                         </button>
