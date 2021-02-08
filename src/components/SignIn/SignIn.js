@@ -120,14 +120,13 @@ class SignIn extends Component {
         </form>
     );
 
-    checkRedirection = () =>
-        <Redirect to="/" /> && this.state.submitted 
+    checkRedirection = () => <Redirect to="/" />;
 
     render() {
         return (
             <>
-                {this.checkRedirection()}
                 {this.showForm()}
+                {this.state.submitted ? this.checkRedirection() : null}
             </>
         );
     }
