@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './Header.css';
-import CardsContext from '../../context/card-context';
+
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const Header = (props) => {
-    const cardContext = useContext(CardsContext);
+
     return (
         <div className="title__header">
             <b className="header">{props.name}</b>
@@ -27,11 +28,16 @@ const Header = (props) => {
             <button type="button" id="counter" className="btn btn-primary">
                 Amount of cards
                 <span className="badge bg-secondary">
-                    {cardContext.list.length}
+                    {props.list.length}
                 </span>
             </button>
         </div>
     );
 };
+const mapToStateProps = (state) => {
+    return {
+        list: state.list,
+    };
+};
 
-export default Header;
+export default connect(mapToStateProps)(Header);

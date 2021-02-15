@@ -1,6 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import CardsContext from '../../context/card-context';
+import { switchView } from '../../store/actions';
+
+import { connect } from 'react-redux';
 
 const StyledDiv = styled.div`
     display: inline-block;
@@ -31,19 +33,28 @@ const StyledDiv = styled.div`
     }
 `;
 
-const MainChekbox = () => {
-    const cardContext = useContext(CardsContext);
+const MainChekbox = props => {
     return (
         <StyledDiv>
             <input
                 type="checkbox"
                 id="view"
-                checked={cardContext.viewCheck}
-                onChange={cardContext.switchView}
+                checked={props.viewCheck}
+                onChange={props.onSwitchView}
             />
             <label htmlFor="view">View only</label>
         </StyledDiv>
     );
 };
 
-export default MainChekbox;
+const mapToStateProps = state => {
+    return {
+        viewCheck: state.viewCheck,
+    };
+};
+
+const mapToDispatchProps = {
+    onSwitchView: switchView,
+};
+
+export default connect(mapToStateProps, mapToDispatchProps)(MainChekbox);

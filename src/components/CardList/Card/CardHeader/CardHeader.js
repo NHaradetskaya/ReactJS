@@ -6,8 +6,7 @@ import {
     AiFillCloseCircle,
 } from 'react-icons/ai';
 
-
-const cardHeader = props => {
+const cardHeader = (props) => {
     const {
         text,
         isEdit,
@@ -16,15 +15,27 @@ const cardHeader = props => {
         onCancel,
         onEdit,
         id,
+        checkboxFlag,
         selected,
         onSwitchColor,
         onChangeTitleHandle,
+        onDoubleClick,
     } = props;
 
-    let caption = <h3 className="text__title">{text}</h3>;
+    let caption = (
+        <h3 className="text__title" onDoubleClick={onDoubleClick}>
+            {text}
+        </h3>
+    );
 
     if (isEdit && !isView) {
-        caption = <textarea className="textarea__caption" value={text} onChange={onChangeTitleHandle} />;
+        caption = (
+            <textarea
+                className="textarea__caption"
+                value={text}
+                onChange={onChangeTitleHandle}
+            />
+        );
     }
 
     return (
@@ -42,13 +53,15 @@ const cardHeader = props => {
                     </div>
                 ) : (
                     <div>
-                        <input
-                            className="checkbox__swicthColor"
-                            type="checkbox"
-                            id={id}
-                            checked={selected}
-                            onChange={onSwitchColor}
-                        />
+                        {checkboxFlag && (
+                            <input
+                                className="checkbox__swicthColor"
+                                type="checkbox"
+                                id={id}
+                                checked={selected}
+                                onChange={onSwitchColor}
+                            />
+                        )}
 
                         {!isView && (
                             <button onClick={onEdit} className="btn__edit">

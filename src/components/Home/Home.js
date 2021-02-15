@@ -1,19 +1,21 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import CardList from '../CardList';
 import MainChekbox from '../MainCheckbox';
-import CardsContext from '../../context/card-context';
+import { connect } from 'react-redux';
+import { create, remove, fetchCards } from '../../store/actions';
+
 import './Home.css';
 
-const Home = () => {
-    const cardContext = useContext(CardsContext);
+const Home = ({ onRemoveCard, onAddCard }) => {
+
     return (
         <>
             <MainChekbox />
 
-            <button onClick={cardContext.handleCardDelete} className="btn__delete">
+            <button onClick={onRemoveCard} className="btn__delete">
                 Delete selected
             </button>
-            <button onClick={cardContext.addCard} className="btn__add">
+            <button onClick={onAddCard} className="btn__add">
                 Add card
             </button>
 
@@ -24,4 +26,10 @@ const Home = () => {
     );
 };
 
-export default Home;
+const mapToDispatchProps = {
+    onAddCard: create,
+    onRemoveCard: remove,
+    onFetchCards: fetchCards,
+};
+
+export default connect(null, mapToDispatchProps)(Home);

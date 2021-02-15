@@ -50,21 +50,21 @@ class Card extends Component {
         this.props.onUpdateCardHandler(title, info);
     };
 
-    changeTitleHandle = event => {
+    changeTitleHandle = (event) => {
         this.setState({ title: event.target.value });
     };
 
-    changeInfoHandle = event => {
+    changeInfoHandle = (event) => {
         this.setState({ info: event.target.value });
     };
 
     render() {
-        const { viewCheck, eachItem } = this.props;
+        const { viewCheck, eachItem, checkboxFlag } = this.props;
         let { editCheck, title, info, flagCheck } = this.state;
 
         return (
             <div
-                className="section"
+                className={this.props.className}
                 style={{
                     backgroundColor: flagCheck ? 'green' : 'white',
                     color: flagCheck ? 'white' : 'black',
@@ -72,6 +72,7 @@ class Card extends Component {
             >
                 <CardHeader
                     text={title}
+                    onDoubleClick={this.props.onClicked}
                     isEdit={editCheck}
                     isView={viewCheck}
                     onSave={this.save}
@@ -81,6 +82,7 @@ class Card extends Component {
                     selected={flagCheck}
                     onSwitchColor={this.switchColor}
                     onChangeTitleHandle={this.changeTitleHandle}
+                    checkboxFlag={checkboxFlag}
                 />
                 <div className="line" />
                 <br />

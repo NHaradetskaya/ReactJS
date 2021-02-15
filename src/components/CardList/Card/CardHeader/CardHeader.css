@@ -2,13 +2,15 @@
     word-wrap: break-word;
     font-size: 20px;
     width: 60%;
+    text-align: left;
 }
 
 .section__title {
-    padding: 10px 40px;
+    padding: 10px 55px;
     width: 100%;
     word-wrap: break-word;
 }
+
 
 .title__block {
     display: flex;
