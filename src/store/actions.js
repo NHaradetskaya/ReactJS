@@ -9,7 +9,7 @@ import {
 import axios from 'axios';
 
 export const fetchCards = () => {
-    return (dispatch) =>
+    return dispatch =>
         axios
             .get(
                 'https://raw.githubusercontent.com/BrunnerLivio/PokemonDataGraber/master/output.json',
@@ -17,24 +17,24 @@ export const fetchCards = () => {
             .then((response) => {
                 dispatch({
                     type: FETCH_DATA,
-                    cards: response.data.slice(0, 15).map((card) => {
-                        return {
-                            id: card.Number,
-                            name: card.Name,
-                            description: card.About,
-                            selected: false,
-                        };
-                    }),
+                    payload: {
+                        cards: response.data.slice(0, 15).map((card) => {
+                            return {
+                                id: card.Number,
+                                name: card.Name,
+                                description: card.About,
+                                selected: false,
+                            };
+                        }),
+                    },
                 });
             });
 };
 
 export const updateCardHandler = (cardId, newCaption, newDescription) => ({
     type: UPDATE_CARD,
-    cardId,
-    newCaption,
-    newDescription
-})
+    payload: { cardId, newCaption, newDescription },
+});
 
 export const create = () => ({
     type: ADD_CARD,
@@ -46,7 +46,7 @@ export const remove = () => ({
 
 export const select = id => ({
     type: SELECT_CARD,
-    id,
+    payload: id,
 });
 
 export const switchView = () => ({

@@ -39,7 +39,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 list: state.list.map((item) =>
-                    item.id === action.id
+                    item.id === action.payload
                         ? { ...item, selected: !item.selected }
                         : item,
                 ),
@@ -49,11 +49,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 list: state.list.map((item) => {
-                    return item.id === action.cardId
+                    return item.id === action.payload.cardId
                         ? {
                               ...item,
-                              name: action.newCaption,
-                              description: action.newDescription,
+                              name: action.payload.newCaption,
+                              description: action.payload.newDescription,
                           }
                         : item;
                 }),
@@ -65,7 +65,7 @@ const reducer = (state = initialState, action) => {
             };
 
         case FETCH_DATA:
-            return { ...state, list: action.cards };
+            return { ...state, list: action.payload.cards };
         default:
             return state;
     }
