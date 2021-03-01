@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './SingleCard.css';
 import Card from '../CardList/Card';
-import { fetchCards, updateCardHandler, select } from '../../store/actions';
+import { fetchCards, updateCardHandler, select } from '../../store/actions/actions';
 
-const SingleCard = props => {
-    const { cards, onSelectCard, onUpdateCard } = props;
+const SingleCard = (props) => {
+    const { cards, onSelectCard, onUpdateCard, viewCheck } = props;
     const { id } = props.match.params;
 
     return cards
@@ -15,12 +15,13 @@ const SingleCard = props => {
                 <Card
                     eachItem={item}
                     key={item.id}
+                    viewCheck={viewCheck}
                     onSelectCardHandler={() => onSelectCard(item.id)}
                     onUpdateCardHandler={(title, info) =>
                         onUpdateCard(item.id, title, info)
                     }
                     className="container"
-                    checkboxFlag = {false}
+                    checkboxFlag={false}
                 />
             );
         });
@@ -28,7 +29,8 @@ const SingleCard = props => {
 
 const mapToStateProps = (state) => {
     return {
-        cards: state.list,
+        cards: state.cards.list,
+        viewCheck: state.cards.viewCheck,
     };
 };
 

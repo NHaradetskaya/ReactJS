@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import { Redirect } from 'react-router-dom';
+import { logIn } from '../../store/reducers/authReducer';
 import Input from './Input';
 import './SignIn.css';
 
@@ -41,8 +44,16 @@ class SignIn extends Component {
     };
 
     saveUserData = (event) => {
+        const { username, password } = this.state.signInForm;
+
         event.preventDefault();
         this.setState({ submitted: true });
+
+        this.props.onLogIn({
+            username: username.value,
+            password: password.value,
+            submitted: true,
+        });
     };
 
     checkValidation = (value, rules) => {
@@ -132,4 +143,14 @@ class SignIn extends Component {
     }
 }
 
-export default SignIn;
+const mapToStateProps = (state) => {
+    return {
+        viewCheck: state.cards.viewCheck,
+    };
+};
+
+const mapToDispatchProps = {
+    onLogIn: logIn,
+};
+
+export default connect(mapToStateProps, mapToDispatchProps)(SignIn);

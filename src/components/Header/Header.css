@@ -10,6 +10,20 @@
     padding: 0 20px;
 }
 
+.section__user{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 5px 10px;
+
+}
+
+.text__user{
+    font-size: 20px;
+    color: rgb(10, 59, 10);
+    padding: 5px 10px;
+}
+
 .title__header ul {
     list-style: none;
     margin: 0;

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Card from './Card';
 import { useHistory } from 'react-router-dom';
-import { fetchCards, updateCardHandler, select } from '../../store/actions';
+import { fetchCards, updateCardHandler, select } from '../../store/actions/actions';
 
 const CardList = ({cards, viewCheck, onSelectCard, onUpdateCard}) => {
     const history = useHistory();
@@ -30,8 +30,8 @@ const CardList = ({cards, viewCheck, onSelectCard, onUpdateCard}) => {
 
 const mapToStateProps = state => {
     return {
-        cards: state.list,
-        viewCheck: state.viewCheck,
+        cards: state.cards.list,
+        viewCheck: state.cards.viewCheck,
     };
 };
 

@@ -5,7 +5,7 @@ import {
     REMOVE_CARD,
     SELECT_CARD,
     SWITCH_VIEW,
-} from './actionTypes';
+} from '../actionTypes';
 import axios from 'axios';
 
 export const fetchCards = () => {

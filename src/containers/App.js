@@ -6,14 +6,9 @@ import Error from '../components/Error';
 
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import SingleCard from '../components/SingleCard/SingleCard';
-import { connect } from 'react-redux';
-import { fetchCards } from '../store/actions';
+import Settings from '../components/Settings';
 
 class App extends Component {
-    componentDidMount() {
-        this.props.onFetchCards();
-    }
-
     render() {
         return (
             <BrowserRouter>
@@ -21,6 +16,7 @@ class App extends Component {
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/sign-in" component={SignIn} />
+                    <Route path="/settings" component={Settings} />
                     <Route path="/card/:id" component={SingleCard} />
                     <Route component={Error} />
                 </Switch>
@@ -29,8 +25,4 @@ class App extends Component {
     }
 }
 
-const mapToDispatchProps = {
-    onFetchCards: fetchCards,
-};
-
-export default connect(null, mapToDispatchProps)(App);
+export default App;

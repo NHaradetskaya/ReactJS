@@ -5,7 +5,7 @@ import {
     REMOVE_CARD,
     SELECT_CARD,
     SWITCH_VIEW,
-} from './actionTypes';
+} from '../actionTypes';
 import { v4 as uuidv4 } from 'uuid';
 
 const initialState = {
@@ -13,7 +13,7 @@ const initialState = {
     viewCheck: false,
 };
 
-const reducer = (state = initialState, action) => {
+const cardReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_CARD:
             return {
@@ -71,4 +71,4 @@ const reducer = (state = initialState, action) => {
     }
 };
 
-export default reducer;
+export default cardReducer;

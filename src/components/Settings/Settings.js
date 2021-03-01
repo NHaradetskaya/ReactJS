@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { switchView } from '../../store/actions';
+import { switchView } from '../../store/actions/actions';
 
 import { connect } from 'react-redux';
 
@@ -33,7 +33,7 @@ const StyledDiv = styled.div`
     }
 `;
 
-const MainChekbox = props => {
+const Settings = props => {
     return (
         <StyledDiv>
             <input
@@ -49,7 +49,7 @@ const MainChekbox = props => {
 
 const mapToStateProps = state => {
     return {
-        viewCheck: state.viewCheck,
+        viewCheck: state.cards.viewCheck,
     };
 };
 
@@ -57,4 +57,4 @@ const mapToDispatchProps = {
     onSwitchView: switchView,
 };
 
-export default connect(mapToStateProps, mapToDispatchProps)(MainChekbox);
+export default connect(mapToStateProps, mapToDispatchProps)(Settings);
